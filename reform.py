@@ -4,6 +4,7 @@ from re import search
 import sys
 from lemmatisation_tools import lemmatise
 import regex as re
+from collections import Counter
 
 csvname = sys.argv[1]
 #print(csvname[len(csvname)-5])
@@ -17,19 +18,8 @@ def isEnglish(s):
     else:
         return True
 
-def r_d(input):
 
-    s = input
-    l = s.split()
-    k = []
-    for i in l:
-  
-    # If condition is used to store unique string 
-    # in another list 'k' 
-        if (s.count(i)>=1 and (i not in k)or s.count(i)==1):
-            k.append(i)
-    return ' '.join(k)
-from collections import Counter
+
   
 def remov_duplicates(input):
   
@@ -48,6 +38,7 @@ def remov_duplicates(input):
     # joins two adjacent elements in iterable way
     s = " ".join(UniqW.keys())
     return s
+
 df = pd.read_csv(csvname)
 saved_column = df.Message
 for x in range(0, int(len(df))):
